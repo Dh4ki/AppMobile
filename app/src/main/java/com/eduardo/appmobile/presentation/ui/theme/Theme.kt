@@ -1,4 +1,4 @@
-package com.eduardo.appmobile.ui.theme
+package com.eduardo.appmobile.presentation.ui.theme
 
 
 import androidx.compose.foundation.isSystemInDarkTheme

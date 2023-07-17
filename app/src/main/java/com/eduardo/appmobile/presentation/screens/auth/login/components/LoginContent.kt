@@ -1,13 +1,13 @@
-package com.eduardo.appmobile
+package com.eduardo.appmobile.presentation.screens.auth.login.components
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
+import android.widget.Button
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,17 +18,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
+import androidx.compose.material.Card
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -39,35 +36,30 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.eduardo.appmobile.ui.theme.AppMobileTheme
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            AppMobileTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    LoginContent()
-                }
-            }
-        }
-    }
-}
+import com.eduardo.appmobile.R
 
 @Composable
-fun LoginContent(){
-    Box(modifier = Modifier.fillMaxSize()){
+fun LoginContent(paddingValues: PaddingValues) {
+
+    //val state = vm.state
+    //val context = LocalContext.current
+
+    //LaunchedEffect(key1 = vm.errorMessage ){
+      //  if (vm.errorMessage != ""){
+        //    Toast.makeText(context, vm.errorMessage, Toast.LENGTH_LONG).show()
+          //  vm.errorMessage = ""
+        //}
+    //}
+
+    Box(modifier = Modifier
+        .padding(paddingValues = paddingValues)
+        .fillMaxSize()){
         Image(
             modifier = Modifier.fillMaxSize(),
             painter = painterResource(id = R.drawable.logo_golosinas),
-            contentDescription = "Imagen de fondo",
+            contentDescription = "Imagen de Fondo",
             contentScale = ContentScale.Crop,
             colorFilter = ColorFilter.colorMatrix(ColorMatrix().apply {
                 setToScale( redScale = 0.5f, greenScale = 0.5f, blueScale = 0.5f, alphaScale = 0.85f)
@@ -123,37 +115,28 @@ fun LoginContent(){
                         modifier = Modifier.fillMaxWidth(),
                         value = "state.email",
                         onValueChange = {},
-                        label = {
-                            Text(text = "Correo Electrónico")
-                        },
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Email,
-                            contentDescription = "email icon"
-                        )
-                    }
+                        //label = "Correo Electrónico",
+                        //icon = Icons.Default.Email,
+                        //keyboardType= KeyboardType.Text
                     )
                     TextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "state.email",
+                        value = "state.password",
                         onValueChange = {},
-                        label = {
-                            Text(text = "Contraseña")
-                        },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Lock,
-                                contentDescription = "email icon"
-                            )
-                        }
+                        //label = "Contraseña",
+                        //icon = Icons.Default.Lock,
+                        //keyboardType = KeyboardType.Password,
+                        //hideText = true
                     )
                     Spacer(modifier = Modifier.height(20.dp))
-                    Button(
-                        modifier = Modifier.fillMaxWidth(),
-                        onClick = { /*TODO*/ }
-                    ) {
-                        Text(text = "LOGIN")
-                    }
+                    //Button(
+                       // modifier = Modifier
+                          //  .fillMaxWidth()
+                        //    .height(50.dp),
+                      //  text = "INICIAR SESIÓN",
+                     //   onClick = {}
+                    //)
+                    Spacer(modifier = Modifier.height(0.dp))
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -170,26 +153,10 @@ fun LoginContent(){
                             color = Color.Blue,
                         )
                     }
-
-
                 }
             }
+
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun GreetingPreview() {
-    AppMobileTheme {
-        Greeting("Android")
     }
 }

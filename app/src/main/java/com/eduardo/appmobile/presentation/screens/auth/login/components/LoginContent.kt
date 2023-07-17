@@ -38,14 +38,16 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.eduardo.appmobile.R
 import com.eduardo.appmobile.presentation.components.DefaultButton
 import com.eduardo.appmobile.presentation.components.DefaultTextField
 import com.eduardo.appmobile.presentation.navigation.screen.AuthScreen
+import com.eduardo.appmobile.presentation.screens.auth.login.LoginViewModel
 
 @Composable
-fun LoginContent( navController: NavHostController,paddingValues: PaddingValues) {
+fun LoginContent( navController: NavHostController,paddingValues: PaddingValues, vm: LoginViewModel = hiltViewModel()) {
 
     //val state = vm.state
     //val context = LocalContext.current
@@ -117,16 +119,20 @@ fun LoginContent( navController: NavHostController,paddingValues: PaddingValues)
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "state.email",
-                        onValueChange = {},
+                        value = vm.email,
+                        onValueChange = {text ->
+                            vm.email = text
+                        },
                         label = "Correo Electrónico",
                         icon = Icons.Default.Email,
                         keyboardType= KeyboardType.Text
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "state.password",
-                        onValueChange = {},
+                        value = vm.password,
+                        onValueChange = {text ->
+                            vm.password = text
+                        },
                         label = "Contraseña",
                         icon = Icons.Default.Lock,
                         keyboardType = KeyboardType.Password,

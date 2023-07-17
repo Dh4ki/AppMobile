@@ -15,7 +15,9 @@ import androidx.navigation.compose.rememberNavController
 import com.eduardo.appmobile.presentation.navigation.graph.RootNavGraph
 import com.eduardo.appmobile.presentation.screens.auth.login.LoginScreen
 import com.eduardo.appmobile.presentation.ui.theme.AppMobileTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController

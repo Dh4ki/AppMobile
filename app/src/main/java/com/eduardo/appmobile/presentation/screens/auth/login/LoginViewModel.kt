@@ -13,13 +13,10 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor() : ViewModel() {
 
-    //var state by mutableStateOf(LoginState())
-    //    private set
+    var state by mutableStateOf(LoginState())
+        private set
 
-    var email by mutableStateOf("")
-    var password by mutableStateOf("")
-
-    //var errorMessage by mutableStateOf("")
+    var errorMessage by mutableStateOf("")
 
     // LOGIN RESPONSE
     //var loginResponse by mutableStateOf<Resource<AuthResponse>?>(null)
@@ -49,13 +46,13 @@ class LoginViewModel @Inject constructor() : ViewModel() {
     //    }
     //}
 
-    //fun onEmailInput(email: String){
-     //   state = state.copy(email = email)
-    //}
+    fun onEmailInput(email: String){
+        state = state.copy(email = email)
+    }
 
-    //fun onPasswordInput(password: String){
-    //    state = state.copy(password = password)
-    //}
+    fun onPasswordInput(password: String){
+        state = state.copy(password = password)
+    }
 
     //fun isValidateForm(): Boolean{
     //    if (!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()){

@@ -49,7 +49,7 @@ import com.eduardo.appmobile.presentation.screens.auth.login.LoginViewModel
 @Composable
 fun LoginContent( navController: NavHostController,paddingValues: PaddingValues, vm: LoginViewModel = hiltViewModel()) {
 
-    //val state = vm.state
+    val state = vm.state
     //val context = LocalContext.current
 
     //LaunchedEffect(key1 = vm.errorMessage ){
@@ -119,9 +119,9 @@ fun LoginContent( navController: NavHostController,paddingValues: PaddingValues,
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = vm.email,
+                        value = state.email,
                         onValueChange = {text ->
-                            vm.email = text
+                            vm.onEmailInput(text)
                         },
                         label = "Correo Electrónico",
                         icon = Icons.Default.Email,
@@ -129,9 +129,9 @@ fun LoginContent( navController: NavHostController,paddingValues: PaddingValues,
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = vm.password,
+                        value = state.password,
                         onValueChange = {text ->
-                            vm.password = text
+                            vm.onPasswordInput(text)
                         },
                         label = "Contraseña",
                         icon = Icons.Default.Lock,

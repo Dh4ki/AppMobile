@@ -37,14 +37,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.eduardo.appmobile.R
 import com.eduardo.appmobile.presentation.components.DefaultButton
 import com.eduardo.appmobile.presentation.components.DefaultTextField
+import com.eduardo.appmobile.presentation.screens.auth.register.RegisterViewModel
 
 @Composable
-fun RegisterContent(paddingValues: PaddingValues){
+fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltViewModel()){
 
-    //val state = vm.state
+    val state = vm.state
     //val context = LocalContext.current
 
     //LaunchedEffect(key1 = vm.errorMessage ){
@@ -115,24 +117,24 @@ fun RegisterContent(paddingValues: PaddingValues){
                     )
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "state.name",
-                        onValueChange ={text -> "vm.onNameInput(text)" } ,
+                        value = state.name,
+                        onValueChange ={text -> vm.onNameInput(text) } ,
                         label = "Nombres",
                         icon =  Icons.Default.Person,
                     )
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "state.lastname",
-                        onValueChange ={text -> "vm.onLastNameInput(text)" } ,
+                        value = state.lastname,
+                        onValueChange ={text -> vm.onLastNameInput(text) } ,
                         label = "Apellidos",
                         icon =  Icons.Outlined.Person,
                     )
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "state.email",
-                        onValueChange ={text -> "vm.onEmailInput(text)" } ,
+                        value = state.email,
+                        onValueChange ={text -> vm.onEmailInput(text) } ,
                         label = "Correo Electrónico",
                         icon =  Icons.Outlined.Email,
                         keyboardType = KeyboardType.Email
@@ -140,8 +142,8 @@ fun RegisterContent(paddingValues: PaddingValues){
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "state.phone",
-                        onValueChange ={text -> "vm.onPhoneInput(text)" } ,
+                        value = state.phone,
+                        onValueChange ={text -> vm.onPhoneInput(text) } ,
                         label = "Teléfono",
                         icon =  Icons.Outlined.Phone,
                         keyboardType = KeyboardType.Number
@@ -149,8 +151,8 @@ fun RegisterContent(paddingValues: PaddingValues){
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "state.password",
-                        onValueChange ={text -> "vm.onPasswordInput(text)" } ,
+                        value = state.password,
+                        onValueChange ={text -> vm.onPasswordInput(text) } ,
                         label = "Contraseña",
                         icon =  Icons.Outlined.Lock,
                         keyboardType = KeyboardType.Password,
@@ -159,8 +161,8 @@ fun RegisterContent(paddingValues: PaddingValues){
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "state.confirmPassword",
-                        onValueChange ={text -> "vm.onConfirmPasswordInput(text)" } ,
+                        value = state.confirmPassword,
+                        onValueChange ={text -> vm.onConfirmPasswordInput(text) } ,
                         label = "Confirmar Contraseña",
                         icon =  Icons.Outlined.Lock,
                         keyboardType = KeyboardType.Password,

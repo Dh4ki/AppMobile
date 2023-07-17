@@ -25,6 +25,7 @@ import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Phone
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -47,14 +48,14 @@ import com.eduardo.appmobile.presentation.screens.auth.register.RegisterViewMode
 fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltViewModel()){
 
     val state = vm.state
-    //val context = LocalContext.current
+    val context = LocalContext.current
 
-    //LaunchedEffect(key1 = vm.errorMessage ){
-      //  if (vm.errorMessage != ""){
-        //    Toast.makeText(context, vm.errorMessage, Toast.LENGTH_LONG).show()
-            //vm.errorMessage = ""
-        //}
-    //}
+    LaunchedEffect(key1 = vm.errorMessage ){
+        if (vm.errorMessage != ""){
+            Toast.makeText(context, vm.errorMessage, Toast.LENGTH_LONG).show()
+            vm.errorMessage = ""
+        }
+    }
 
     Box(modifier = Modifier
         .padding(paddingValues = paddingValues)
@@ -174,7 +175,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                             .fillMaxWidth()
                             .height(50.dp),
                         text = "CONFIRMAR",
-                        onClick = { "vm.register()" }
+                        onClick = { vm.isValidForm() }
                     )
                 }
             }

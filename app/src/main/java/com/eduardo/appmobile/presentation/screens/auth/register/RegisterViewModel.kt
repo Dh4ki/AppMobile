@@ -25,33 +25,28 @@ class RegisterViewModel @Inject constructor(): ViewModel() {
     //    authUseCase.saveSession(authResponse)
     //}
 
-    //fun register() = viewModelScope.launch {
-    //   if (isValidForm()){
-    //        registerResponse = Resource.Loading
-    //        val result = authUseCase.register(state.toUser())
-    //        registerResponse = result //DATA / ERROR
-    //    }
-    //}
+    fun register() = viewModelScope.launch {
+        if (isValidForm()){
+            //registerResponse = Resource.Loading
+            //val result = authUseCase.register(state.toUser())
+            //registerResponse = result //DATA / ERROR
+        }
+    }
     fun onNameInput(input: String){
         state= state.copy(name = input)
     }
-
     fun onLastNameInput(input: String){
         state= state.copy(lastname = input)
     }
-
     fun onEmailInput(input: String){
         state= state.copy(email = input)
     }
-
     fun onPhoneInput(input: String){
         state= state.copy(phone = input)
     }
-
     fun onPasswordInput(input: String){
         state= state.copy(password = input)
     }
-
     fun onConfirmPasswordInput(input: String){
         state= state.copy(confirmPassword = input)
     }

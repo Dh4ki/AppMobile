@@ -1,6 +1,5 @@
 package com.eduardo.appmobile.presentation.screens.auth.login.components
 
-import android.widget.Button
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -32,6 +31,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -50,14 +50,14 @@ import com.eduardo.appmobile.presentation.screens.auth.login.LoginViewModel
 fun LoginContent( navController: NavHostController,paddingValues: PaddingValues, vm: LoginViewModel = hiltViewModel()) {
 
     val state = vm.state
-    //val context = LocalContext.current
+    val context = LocalContext.current
 
-    //LaunchedEffect(key1 = vm.errorMessage ){
-      //  if (vm.errorMessage != ""){
-        //    Toast.makeText(context, vm.errorMessage, Toast.LENGTH_LONG).show()
-          //  vm.errorMessage = ""
-        //}
-    //}
+    LaunchedEffect(key1 = vm.errorMessage ){
+        if (vm.errorMessage != ""){
+            Toast.makeText(context, vm.errorMessage, Toast.LENGTH_LONG).show()
+            vm.errorMessage = ""
+        }
+    }
 
     Box(modifier = Modifier
         .padding(paddingValues = paddingValues)
@@ -144,7 +144,7 @@ fun LoginContent( navController: NavHostController,paddingValues: PaddingValues,
                             .fillMaxWidth()
                             .height(50.dp),
                         text = "INICIAR SESIÓN",
-                        onClick = {}
+                        onClick = { vm.isValidateForm() }
                     )
                     Spacer(modifier = Modifier.height(0.dp))
                     Row(

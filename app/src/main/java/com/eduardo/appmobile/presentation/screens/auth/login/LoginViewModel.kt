@@ -40,10 +40,10 @@ class LoginViewModel @Inject constructor() : ViewModel() {
 
     //fun login() = viewModelScope.launch {
     //    if (isValidateForm()){
-    //        loginResponse = Resource.Loading // ESPERANDO
-    //        val result = authUseCase.login(state.email, state.password) //RETORNA UNA RESPUESTA
-    //        loginResponse = result //EXITOSA / ERROR
-    //    }
+     //       loginResponse = Resource.Loading // ESPERANDO
+     //       val result = authUseCase.login(state.email, state.password) //RETORNA UNA RESPUESTA
+     //       loginResponse = result //EXITOSA / ERROR
+     //   }
     //}
 
     fun onEmailInput(email: String){
@@ -54,17 +54,17 @@ class LoginViewModel @Inject constructor() : ViewModel() {
         state = state.copy(password = password)
     }
 
-    //fun isValidateForm(): Boolean{
-    //    if (!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()){
-    //        errorMessage = "El correo electrónico no es válido"
-    //        return false
-    //    }
-    //    else if (state.password.length < 6 ){
-    //        errorMessage = "La contraseña debe tener al menos 6 caracteres"
-    //        return false
-    //    }
-    //    return true
-    //}
+    fun isValidateForm(): Boolean{
+        if (!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()){
+            errorMessage = "El correo electrónico no es válido"
+            return false
+        }
+        else if (state.password.length < 6 ){
+            errorMessage = "La contraseña debe tener al menos 6 caracteres"
+            return false
+        }
+        return true
+    }
 
 
 }

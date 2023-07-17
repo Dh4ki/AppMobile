@@ -10,10 +10,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.eduardo.appmobile.presentation.navigation.graph.RootNavGraph
 import com.eduardo.appmobile.presentation.screens.auth.login.LoginScreen
 import com.eduardo.appmobile.presentation.ui.theme.AppMobileTheme
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var navController: NavHostController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -23,7 +28,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    LoginScreen()
+                    navController = rememberNavController()
+                    RootNavGraph(navController = navController)
                 }
             }
         }

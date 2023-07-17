@@ -38,12 +38,14 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.eduardo.appmobile.R
 import com.eduardo.appmobile.presentation.components.DefaultButton
 import com.eduardo.appmobile.presentation.components.DefaultTextField
+import com.eduardo.appmobile.presentation.navigation.screen.AuthScreen
 
 @Composable
-fun LoginContent(paddingValues: PaddingValues) {
+fun LoginContent( navController: NavHostController,paddingValues: PaddingValues) {
 
     //val state = vm.state
     //val context = LocalContext.current
@@ -150,7 +152,7 @@ fun LoginContent(paddingValues: PaddingValues) {
                         )
                         Spacer(modifier = Modifier.width(10.dp))
                         Text(
-                            modifier = Modifier.clickable {  },
+                            modifier = Modifier.clickable { navController.navigate(route = AuthScreen.Register.route) },
                             text = "Regístrate",
                             color = Color.Blue,
                         )

@@ -39,6 +39,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.eduardo.appmobile.R
+import com.eduardo.appmobile.presentation.components.DefaultButton
+import com.eduardo.appmobile.presentation.components.DefaultTextField
 
 @Composable
 fun LoginContent(paddingValues: PaddingValues) {
@@ -73,8 +75,8 @@ fun LoginContent(paddingValues: PaddingValues) {
         ) {
             Image(
                 modifier = Modifier
-                    .height(170.dp)
-                    .width(170.dp),
+                    .height(175.dp)
+                    .width(175.dp),
                 painter = painterResource(id = R.drawable.golosinas),
                 contentDescription = "Logo"
             )
@@ -111,31 +113,31 @@ fun LoginContent(paddingValues: PaddingValues) {
                         fontSize = 20.sp,
                         color = Color.Black,
                     )
-                    TextField(
+                    DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = "state.email",
                         onValueChange = {},
-                        //label = "Correo Electrónico",
-                        //icon = Icons.Default.Email,
-                        //keyboardType= KeyboardType.Text
+                        label = "Correo Electrónico",
+                        icon = Icons.Default.Email,
+                        keyboardType= KeyboardType.Text
                     )
-                    TextField(
+                    DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = "state.password",
                         onValueChange = {},
-                        //label = "Contraseña",
-                        //icon = Icons.Default.Lock,
-                        //keyboardType = KeyboardType.Password,
-                        //hideText = true
+                        label = "Contraseña",
+                        icon = Icons.Default.Lock,
+                        keyboardType = KeyboardType.Password,
+                        hideText = true
                     )
                     Spacer(modifier = Modifier.height(20.dp))
-                    //Button(
-                       // modifier = Modifier
-                          //  .fillMaxWidth()
-                        //    .height(50.dp),
-                      //  text = "INICIAR SESIÓN",
-                     //   onClick = {}
-                    //)
+                    DefaultButton(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp),
+                        text = "INICIAR SESIÓN",
+                        onClick = {}
+                    )
                     Spacer(modifier = Modifier.height(0.dp))
                     Row(
                         modifier = Modifier

@@ -23,6 +23,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.Card
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -124,7 +125,13 @@ fun LoginContent(){
                         onValueChange = {},
                         label = {
                             Text(text = "Correo Electrónico")
-                        }
+                        },
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Default.Email,
+                            contentDescription = "email icon"
+                        )
+                    }
                     )
                     TextField(
                         modifier = Modifier.fillMaxWidth(),
@@ -132,6 +139,12 @@ fun LoginContent(){
                         onValueChange = {},
                         label = {
                             Text(text = "Contraseña")
+                        },
+                        leadingIcon = {
+                            Icon(
+                                imageVector = Icons.Default.Lock,
+                                contentDescription = "email icon"
+                            )
                         }
                     )
                     Spacer(modifier = Modifier.height(20.dp))

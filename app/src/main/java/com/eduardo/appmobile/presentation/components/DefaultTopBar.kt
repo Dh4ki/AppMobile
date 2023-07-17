@@ -42,7 +42,7 @@ fun DefaultTopBar(
         },
         actions = {
             if (enableActions){
-                IconButton(onClick = {  }) {
+                IconButton(onClick = { navController?.popBackStack() }) {
                     Icon(
                         imageVector = Icons.Default.ShoppingCart,
                         contentDescription = "",

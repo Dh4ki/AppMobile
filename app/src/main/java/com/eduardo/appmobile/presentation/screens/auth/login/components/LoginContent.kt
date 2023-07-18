@@ -55,7 +55,7 @@ fun LoginContent( navController: NavHostController,paddingValues: PaddingValues,
     LaunchedEffect(key1 = vm.errorMessage ){
         if (vm.errorMessage != ""){
             Toast.makeText(context, vm.errorMessage, Toast.LENGTH_LONG).show()
-            vm.errorMessage = ""
+            //vm.errorMessage = ""
         }
     }
 
@@ -144,7 +144,7 @@ fun LoginContent( navController: NavHostController,paddingValues: PaddingValues,
                             .fillMaxWidth()
                             .height(50.dp),
                         text = "INICIAR SESIÓN",
-                        onClick = { vm.isValidateForm() }
+                        onClick = { vm.login() }
                     )
                     Spacer(modifier = Modifier.height(0.dp))
                     Row(

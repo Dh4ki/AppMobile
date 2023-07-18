@@ -6,21 +6,25 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.eduardo.appmobile.domain.model.User
+import com.eduardo.appmobile.domain.useCase.auth.AuthUseCase
+import com.eduardo.appmobile.domain.util.Response
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor() : ViewModel() {
+class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase) : ViewModel() {
 
     var state by mutableStateOf(LoginState())
         private set
 
     var errorMessage by mutableStateOf("")
+        private set
 
     // LOGIN RESPONSE
-    //var loginResponse by mutableStateOf<Resource<AuthResponse>?>(null)
-    //    private set
+    var loginResponse by mutableStateOf<Response<User>?>(null)
+        private set
 
     //init {
     //    getSessionData()
@@ -38,13 +42,13 @@ class LoginViewModel @Inject constructor() : ViewModel() {
     //    authUseCase.saveSession(authResponse)
     //}
 
-    //fun login() = viewModelScope.launch {
-    //    if (isValidateForm()){
-     //       loginResponse = Resource.Loading // ESPERANDO
-     //       val result = authUseCase.login(state.email, state.password) //RETORNA UNA RESPUESTA
-     //       loginResponse = result //EXITOSA / ERROR
-     //   }
-    //}
+    fun login() = viewModelScope.launch {
+        if (isValidateForm()){
+            loginResponse = Response.Loading // ESPERANDO
+            val result = authUseCase.login(state.email, state.password) //RETORNA UNA RESPUESTA
+            loginResponse = result //EXITOSA / ERROR
+        }
+    }
 
     fun onEmailInput(email: String){
         state = state.copy(email = email)
